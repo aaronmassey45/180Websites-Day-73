@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import Fact from './fact'
+import { fetchDateFact } from '../actions';
 
 class Card extends Component {
   constructor() {
@@ -17,8 +20,11 @@ class Card extends Component {
   }
 
   handleSubmit = (e) => {
+    const { date } = this.state;
     e.preventDefault();
-    this.props.fetchDateFact(this.state.date);
+    if (date !== '') {
+      this.props.fetchDateFact(this.state.date);
+    }
   }
 
   render() {
@@ -42,4 +48,8 @@ class Card extends Component {
   }
 }
 
-export default Card;
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ fetchDateFact }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(Card);
