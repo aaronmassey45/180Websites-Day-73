@@ -1,4 +1,4 @@
-import { CALL_API } from 'redux-api-middleware';
+import { RSAA } from 'redux-api-middleware';
 
 export const REQUEST = 'REQUEST';
 export const SUCCESS = 'SUCCESS';
@@ -6,15 +6,14 @@ export const FAILURE = 'FAILURE';
 
 export function fetchDateFact(date) {
   return ({
-    [CALL_API]: {
+    [RSAA]: {
       types: [REQUEST,
         {
-        type: SUCCESS,
-        payload: (action, state, response) => {
-          console.log(response);
-          return response
-        }
-      },
+          type: SUCCESS,
+          payload: (action, state, res) => {
+            return res.text()
+          }
+        },
         FAILURE],
       endpoint: `http://numbersapi.com/${date}/date`,
       method: 'GET'

@@ -3,19 +3,25 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import Navbar from './navbar';
-import Fact from './fact';
+import Card from './card';
 import { fetchDateFact } from '../actions';
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchDateFact('10/10');
+    //this.props.fetchDateFact('10/10');
   }
 
   render() {
     return (
       <div className='App'>
         <Navbar brand='On This Day' />
-        <Fact />
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6 mx-auto">
+              <Card />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

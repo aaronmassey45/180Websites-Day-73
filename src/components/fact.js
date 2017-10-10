@@ -3,17 +3,18 @@ import { connect } from 'react-redux';
 
 class Fact extends Component {
   render() {
-    const { fact } = this.props;
+    let { fact } = this.props;
     return (
-      <div className='Fact'>
-        {fact ? fact : ''}
+      <div className='Fact card-body' style={{ display: fact ? 'block' : 'none' }}>
+        <h4 className="card-title">Date Fact</h4>
+        <p className='card-text'>{fact ? fact : ''}</p>
       </div>
     );
   }
 }
 
 const mapStatetoProps = state => ({
-  fact: state.fact
+  fact: state.date_fact.fact
 })
 
 export default connect(mapStatetoProps, null)(Fact)
