@@ -38,7 +38,7 @@ class Card extends Component {
             className="form-control form-control-lg"
             onChange={this.handleChange}
             value={this.state.date}
-            placeholder='ex. 10/9'
+            placeholder='ex. 10/9 or 123'
           />
           <button type='submit' className="btn btn-block btn-default">Submit</button>
         </form>
